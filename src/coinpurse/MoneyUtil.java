@@ -3,8 +3,20 @@ package coinpurse;
 import java.util.ArrayList;
 import java.util.List;
 
+/** 
+ * Class MoneyUtil create for test coin class 
+ * @author Atid Srisukhantapuek
+ * 
+ */
+
+
 public class MoneyUtil {
 	
+	/**
+	 *  filter coin by currency
+	 *  @param coin
+	 *  @return filter coin
+	 */
 	public static List<Coin> filterByCurrency(List<Coin>coins,String Currency){
 		List<Coin> temp = new ArrayList<Coin>();
 		
@@ -16,12 +28,22 @@ public class MoneyUtil {
 		}
 		return temp;
 	}
+	
+	/**
+	 * print coin
+	 * @param coin
+	 */
 	public static void printCoins(List<Coin> coin){
 		for(Coin obj: coin) {
 			System.out.println(obj.toString());
 		}
 	}
 	
+	/**
+	 * sort coin minimum to maximum
+	 * @param coin
+	 * 
+	 */
 	public static void sortCoins(List<Coin> coins) {
 		
 		java.util.Collections.sort( coins );
