@@ -36,9 +36,7 @@ public class Coin implements Comparable<Coin> {
 
 	/**
 	 * Check value and currency of Coin that equal to other or not
-	 * 
-	 * @param other
-	 *            coin
+	 * @param other coin
 	 * @return true or false
 	 */
 	public boolean equals(Object arg) {
@@ -59,10 +57,11 @@ public class Coin implements Comparable<Coin> {
 
 	/**
 	 * compare coin to other coin
-	 * 
-	 * @param other
-	 *            coin
+	 * @param other coin
 	 * @return order value
+	 *  a compare to b      -1 if a < b
+	 *                       0 if a = b
+	 *                       1 if a > b
 	 */
 	public int compareTo(Coin coin) {
 		if (value < coin.getValue()) {
