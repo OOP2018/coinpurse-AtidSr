@@ -188,9 +188,8 @@ public class Purse {
 //		System.out.println(n.toString());
 //
 //		System.out.println("0 is here");
-//		n.insert(new Coin(0, "nCoin"));
-//		n.insert(new Coin(-9999, "nCoin"));
-//		System.out.println(n.toString());
+//		System.out.println(n.insert(new Coin(0, "nCoin")));
+//		System.out.println(n.insert(new Coin(-9999, "nCoin")));
 //		
 //		System.out.println(Arrays.toString(n.withdraw(88)));
 //		System.out.println(n.toString());
@@ -208,6 +207,8 @@ public class Purse {
 //		System.out.println(test.toString());
 //		test.insert(new Coin(55, "currency"));
 //		System.out.println(test.toString());
+//		System.out.println(Arrays.toString(test.withdraw(999)));
+//
 //
 //	}
 

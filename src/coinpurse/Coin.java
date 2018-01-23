@@ -54,8 +54,8 @@ public class Coin implements Comparable<Coin> {
 
 	/**
 	 * Check value and currency of Coin that equal to other or not
-	 * @param coin that user want to compare
-	 * @return true if equal and false if not equals
+	 * @param obj coin that user want to compare to this coin
+	 * @return true if equal otherwise false 
 	 */
 	public boolean equals(Object arg) {
 		// (1) verify that obj is not null
@@ -77,9 +77,9 @@ public class Coin implements Comparable<Coin> {
 	 * method for order coin by value which is the smallest come first
 	 * @param coin that user want to compare 
 	 * @return order value a compare to b, 
-	 * -1 if a < b 
-	 *  0 if a = b 
-	 *  1 if a > b
+	 * -1 if coin a's value is greater than b's value 
+	 *  0 if coin a's value is equals b's value 
+	 *  1 if coin a's value is lower than b's value 
 	 */
 	public int compareTo(Coin coin) {
 		if (value < coin.getValue()) {
