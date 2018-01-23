@@ -7,37 +7,55 @@ import java.util.List;
  * Coin represents coinage (money) with a fixed value and currency.
  * 
  * @author Atid Srisukhantapuek
- * @version 2018.1.19
+ * @version 2018.1.23
  */
 
 public class Coin implements Comparable<Coin> {
-
+	
+	/**value of coin*/
 	private double value;
+	/**currency of coin*/
 	private String currency;
-
+	
+	/**
+	 * Constructor of coin with value and currency
+	 * @param coin's value
+	 * @param coin's currency 
+	 */
+	
 	public Coin(double value, String currency) {
-		if (value >= 0) {
-			this.value = value;
-		} else {
-			this.value = 0;
+		try {
+			if(value <= 0) {
+				throw new IllegalArgumentException();
+			}else {
+				this.value = value;
+			}
+				
+		}catch(IllegalArgumentException e){
+			System.out.println("value must be positive");
 		}
+		
 		this.currency = currency;
 	}
 
-	/** get Coin value */
+	/** get Coin's value
+	 * @return value of coin 
+	 */
 	public double getValue() {
 		return value;
 	}
 
-	/** get Coin currency */
+	/** get Coin's currency 
+	 * @return currency of coin
+	 */
 	public String getCurrency() {
 		return currency;
 	}
 
 	/**
 	 * Check value and currency of Coin that equal to other or not
-	 * @param other coin
-	 * @return true or false
+	 * @param coin that user want to compare
+	 * @return true if equal and false if not equals
 	 */
 	public boolean equals(Object arg) {
 		// (1) verify that obj is not null
@@ -56,12 +74,12 @@ public class Coin implements Comparable<Coin> {
 	}
 
 	/**
-	 * compare coin to other coin
-	 * @param other coin
-	 * @return order value
-	 *  a compare to b      -1 if a < b
-	 *                       0 if a = b
-	 *                       1 if a > b
+	 * method for order coin by value which is the smallest come first
+	 * @param coin that user want to compare 
+	 * @return order value a compare to b, 
+	 * -1 if a < b 
+	 *  0 if a = b 
+	 *  1 if a > b
 	 */
 	public int compareTo(Coin coin) {
 		if (value < coin.getValue()) {
@@ -72,11 +90,11 @@ public class Coin implements Comparable<Coin> {
 		return 0;
 	}
 
-	/** get string of this coin */
+	/** show detail of coin (value and currency)
+	 * @return coin value and currency
+	 */
 	public String toString() {
 		return value + "-" + currency;
 	}
-
-
 
 }

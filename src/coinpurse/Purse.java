@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Collections;
-//TODO import List, ArrayList, and Collections
 // You will use Collections.sort() to sort the coins
 
 /**
@@ -16,7 +15,6 @@ import java.util.Collections;
  */
 public class Purse {
     /** Collection of objects in the purse. */
-    //TODO declare a List of Coins named "money".
 	List<Coin> money = new ArrayList<Coin>();
  
     /** Capacity is maximum number of items the purse can hold.
@@ -30,6 +28,8 @@ public class Purse {
      */
     public Purse( int capacity ) {
     	this.capacity = capacity;
+    	
+    	
     }
 
     /**
@@ -71,10 +71,6 @@ public class Purse {
      *  @return true if purse is full.
      */
     public boolean isFull() {
-    	
-    	if(money.isEmpty()) {
-    		return false;
-    	}
   
         if(money.size() == capacity) { 
         	return true;
@@ -92,14 +88,12 @@ public class Purse {
     public boolean insert( Coin coin ) {
         // if the purse is already full then can't insert anything.
 
-    	if(isFull()) {
+    	if(this.isFull() || coin.getValue() == 0) {
     		return false;
+    	}else {
+    		money.add(coin);
+    		return true;
     	}
-    	
-    	if(coin.getValue() > 0) money.add(coin);
-
-    	
-        return true;
     }
     
     /**  
@@ -180,7 +174,7 @@ public class Purse {
     	return "Purse capacity: "+getCapacity()+" Total money: "+getBalance()+" Capacity in Use: "+count();
     }
     
-    /**Test Purse */
+    /**Main method for test Purse class */
 //    public static void main(String[] args) {
 //		Purse n = new Purse(5);
 //	
@@ -195,7 +189,7 @@ public class Purse {
 //
 //		System.out.println("0 is here");
 //		n.insert(new Coin(0, "nCoin"));
-//
+//		n.insert(new Coin(-9999, "nCoin"));
 //		System.out.println(n.toString());
 //		
 //		System.out.println(Arrays.toString(n.withdraw(88)));

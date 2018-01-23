@@ -13,9 +13,9 @@ import java.util.List;
 public class MoneyUtil {
 	
 	/**
-	 *  filter coin by currency
-	 *  @param coin
-	 *  @return filter coin
+	 *  filter coin by currency of coin
+	 *  @param coin that user want to filter
+	 *  @return list of coin with same currency
 	 */
 	public static List<Coin> filterByCurrency(List<Coin>coins,String Currency){
 		List<Coin> temp = new ArrayList<Coin>();
@@ -30,8 +30,8 @@ public class MoneyUtil {
 	}
 	
 	/**
-	 * print coin
-	 * @param coin
+	 * Print all coins that in list
+	 * @param list of coin that user want to print
 	 */
 	public static void printCoins(List<Coin> coin){
 		for(Coin obj: coin) {
@@ -40,8 +40,9 @@ public class MoneyUtil {
 	}
 	
 	/**
-	 * sort coin minimum to maximum
-	 * @param coin
+	 * Sort coin by minimum value to maximum value
+	 * and print coin
+	 * @param coins
 	 * 
 	 */
 	public static void sortCoins(List<Coin> coins) {
