@@ -72,7 +72,7 @@ public class Purse {
      */
     public boolean isFull() {
   
-        if(money.size() == capacity) { 
+        if(money.size() >= capacity) { 
         	return true;
         }  	
     	return false;
@@ -180,7 +180,7 @@ public class Purse {
 //	
 //		System.out.println(n.toString());
 //		System.out.println(n.isFull());
-//		n.insert(new Coin(88, "kCoin"));
+//		System.out.println(n.insert(new Coin(88, "kCoin")));
 //		n.insert(new Coin(77, "nCoin"));
 //		n.insert(new Coin(42, "vCoin"));
 //		n.insert(new Coin(36, "vCoin"));
