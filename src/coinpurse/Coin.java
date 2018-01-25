@@ -12,15 +12,15 @@ import java.util.List;
 
 public class Coin implements Comparable<Coin> {
 	
-	/**value of coin*/
+	/**Value of coin*/
 	private double value;
-	/**currency of coin*/
+	/**Currency of coin*/
 	private String currency;
 	
 	/**
 	 * Constructor of coin with value and currency
-	 * @param coin's value
-	 * @param coin's currency 
+	 * @param Coin's value
+	 * @param Coin's currency 
 	 */
 	
 	public Coin(double value, String currency) {
@@ -38,15 +38,15 @@ public class Coin implements Comparable<Coin> {
 		this.currency = currency;
 	}
 
-	/** get Coin's value
-	 * @return value of coin 
+	/** Get Coin's value
+	 * @return Value of coin 
 	 */
 	public double getValue() {
 		return value;
 	}
 
-	/** get Coin's currency 
-	 * @return currency of coin
+	/** Get Coin's currency 
+	 * @return Currency of coin
 	 */
 	public String getCurrency() {
 		return currency;
@@ -54,7 +54,7 @@ public class Coin implements Comparable<Coin> {
 
 	/**
 	 * Check value and currency of Coin that equal to other or not
-	 * @param obj coin that user want to compare to this coin
+	 * @param Obj coin that user want to compare to this coin
 	 * @return true if equal otherwise false 
 	 */
 	public boolean equals(Object arg) {
@@ -74,9 +74,9 @@ public class Coin implements Comparable<Coin> {
 	}
 
 	/**
-	 * method for order coin by value which is the smallest come first
-	 * @param coin that user want to compare 
-	 * @return order value a compare to b, 
+	 * Method for order coin by value which is the smallest come first
+	 * @param Coin that user want to compare 
+	 * @return Order value a compare to b, 
 	 * -1 if coin a's value is greater than b's value 
 	 *  0 if coin a's value is equals b's value 
 	 *  1 if coin a's value is lower than b's value 
@@ -90,7 +90,7 @@ public class Coin implements Comparable<Coin> {
 		return 0;
 	}
 
-	/** show detail of coin (value and currency)
+	/** Show detail of coin (value and currency)
 	 * @return coin value and currency
 	 */
 	public String toString() {

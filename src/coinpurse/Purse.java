@@ -88,7 +88,7 @@ public class Purse {
     public boolean insert( Coin coin ) {
         // if the purse is already full then can't insert anything.
 
-    	if(this.isFull() || coin.getValue() == 0) {
+    	if(this.isFull() || coin.getValue()== 0) {
     		return false;
     	}else {
     		money.add(coin);

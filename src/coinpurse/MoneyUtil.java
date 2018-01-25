@@ -13,7 +13,7 @@ import java.util.List;
 public class MoneyUtil {
 	
 	/**
-	 *  filter coin by currency of coin
+	 *  Filter coin by currency of coin
 	 *  @param coin that user want to filter
 	 *  @return list of coin with same currency
 	 */
