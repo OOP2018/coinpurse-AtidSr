@@ -25,21 +25,21 @@ public class BankNote implements Valuable {
 		this.serialNumber = nextSerialNumber++;
 	}
 	/** Get value of BankNote
-	  @return BankNote's value
+	 * @return BankNote's value
 	 */
 	public double getValue() {
 		return value;
 	}
 	
 	/** Get currency of BankNote
-	  @return BankNote's currency
+	 * @return BankNote's currency
 	 */
 	public String getCurrency() {
 		return currency;
 	}
 	
 	/** Get serial number of BankNote
-	  @return BankNote's serial number 
+	 * @return BankNote's serial number 
 	 */
 	public long getSerial() {
 		return serialNumber;
