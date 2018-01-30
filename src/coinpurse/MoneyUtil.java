@@ -3,8 +3,10 @@ package coinpurse;
 import java.util.ArrayList;
 import java.util.List;
 
+import jdk.internal.org.objectweb.asm.tree.analysis.Value;
+
 /** 
- * Class MoneyUtil create for test coin class 
+ * Class MoneyUtil create for test coin and BankNote class 
  * @author Atid Srisukhantapuek
  * 
  */
@@ -13,16 +15,16 @@ import java.util.List;
 public class MoneyUtil {
 	
 	/**
-	 *  Filter coin by currency of coin
-	 *  @param coin that user want to filter
+	 *  Filter value by currency of value
+	 *  @param value that user want to filter
 	 *  @return list of coin with same currency
 	 */
-	public static List<Coin> filterByCurrency(List<Coin>coins,String Currency){
-		List<Coin> temp = new ArrayList<Coin>();
+	public static List<Valuable> filterByCurrency(List<Valuable>coins,String Currency){
+		List<Valuable> temp = new ArrayList<Valuable>();
 		
-		for(Coin coin:coins) {
-			if(coin.getCurrency().equals(Currency)) {
-				temp.add(coin);
+		for(Valuable val: coins) {
+			if(val.getCurrency().equals(Currency)) {
+				temp.add(val);
 			}
 			
 		}
@@ -30,13 +32,13 @@ public class MoneyUtil {
 	}
 	
 	/**
-	 * Print all coins that in list
-	 * @param list of coin that user want to print
+	 * Print all Valuable that in list
+	 * @param list of Valuable that user want to print
 	 */
-	public static void printCoins(List<Coin> coin){
-		for(Coin obj: coin) {
-			System.out.println(obj.toString());
-		}
+	public static void printCoins(List<Valuable> val){
+	
+			System.out.println(val.toString());
+	
 	}
 	
 	/**
@@ -45,9 +47,9 @@ public class MoneyUtil {
 	 * @param coins
 	 * 
 	 */
-	public static void sortCoins(List<Coin> coins) {
+	public static void sortCoins(List<Valuable> coins) {
 		
-		java.util.Collections.sort( coins );
+		java.util.Collections.sort( coins , new ValueComparator());
 
 		printCoins(coins);
 
@@ -55,21 +57,25 @@ public class MoneyUtil {
 	
 	public static void main(String[] args) {
 
-		List<Coin> coins = new ArrayList<Coin>();
+		List<Valuable> coins = new ArrayList<Valuable>();
 		coins.add(new Coin(10.0,"Baht"));
-		coins.add(new Coin(0.5, "Baht"));
+		coins.add(new BankNote(787878, "Baht"));
 		coins.add(new Coin(2.0, "Baht"));
-		coins.add(new Coin(4.6, "Penny"));
-		coins.add(new Coin(50, "Penny"));
-		coins.add(new Coin(8.7, "Zen"));
-		coins.add(new Coin(0.5, "Zen"));
-		coins.add(new Coin(4.3, "Zen"));
+		coins.add(new BankNote(44000, "Dollar"));
+		coins.add(new Coin(50, "Dollar"));
+		coins.add(new Coin(8.7, "Dollar"));
+		coins.add(new BankNote(47514854, "Baht"));
+		coins.add(new Coin(4.3, "Baht"));
+		
+		System.out.println("////////////unsorted////////////////////////////");
 
 		printCoins(coins);
-		System.out.println("////////////////////////////////////////");
-		
-		sortCoins(filterByCurrency(coins, "Baht"));
-		sortCoins(filterByCurrency(coins, "Zen"));
+		System.out.println("////////////////sorted////////////////////////");
+		sortCoins(coins);
+		System.out.println("//////////////////////////////////////////////");
+
+		System.out.println(filterByCurrency(coins, "Baht"));
+		System.out.println(filterByCurrency(coins, "Dollar"));
 
 	}
 	
