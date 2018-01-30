@@ -14,7 +14,7 @@ import java.util.Comparator;
  *  
  *  @author Atid Srisukhantapuek
  */
-public class Purse implements Valuable {
+public class Purse  {
     /** Collection of objects in the purse. */
 	List<Valuable> money = new ArrayList<Valuable>();
  
@@ -176,15 +176,7 @@ public class Purse implements Valuable {
     	return "Purse capacity: "+getCapacity()+" Total money: "+getBalance()+" Capacity in Use: "+count();
     }
 
-	@Override
-	public double getValue() {
-		return 0;
-	}
 
-	@Override
-	public String getCurrency() {
-		return null;
-	}
     
     /**Main method for test Purse class */
 //    public static void main(String[] args) {
