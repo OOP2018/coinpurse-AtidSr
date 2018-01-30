@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Collections;
+import java.util.Comparator;
 // You will use Collections.sort() to sort the coins
 
 /**
@@ -13,9 +14,9 @@ import java.util.Collections;
  *  
  *  @author Atid Srisukhantapuek
  */
-public class Purse {
+public class Purse implements Valuable {
     /** Collection of objects in the purse. */
-	List<Coin> money = new ArrayList<Coin>();
+	List<Valuable> money = new ArrayList<Valuable>();
  
     /** Capacity is maximum number of items the purse can hold.
      *  Capacity is set when the purse is created and cannot be changed.
@@ -85,13 +86,13 @@ public class Purse {
      * @param coin is a Coin object to insert into purse
      * @return true if coin inserted, false if can't insert
      */
-    public boolean insert( Coin coin ) {
+    public boolean insert( Valuable value ) {
         // if the purse is already full then can't insert anything.
 
-    	if(this.isFull() || coin.getValue() == 0) {
+    	if(this.isFull() || value.getValue() == 0) {
     		return false;
     	}else {
-    		money.add(coin);
+    		money.add(value);
     		return true;
     	}
     }
@@ -104,7 +105,7 @@ public class Purse {
      *  @return array of Coin objects for money withdrawn, 
 	 *    or null if cannot withdraw requested amount.
      */
-    public Coin[] withdraw( double amount ) {
+    public Valuable[] withdraw( double amount ) {
     	if(amount < 0) {
     		return null;
     	}
@@ -129,12 +130,13 @@ public class Purse {
 		// Did we get the full amount?
 		// This code assumes you decrease amount each time you remove a coin.
     	// Your code might use some other variable for the remaining amount to withdraw.
-    	List<Coin> temp = new ArrayList<Coin>();
-    	Collections.sort(money);
+    	List<Valuable> temp = new ArrayList<Valuable>();
+    	Collections.sort(money, new ValueComparator());
     	Collections.reverse(money);
     	double amountNeededToWithdraw = amount;
 
 		for(int i = 0; i < money.size(); i++) {
+
 			if(money.get(i).getValue() <= amountNeededToWithdraw) {
 				amountNeededToWithdraw -= money.get(i).getValue();
 				temp.add(money.get(i));
@@ -160,9 +162,9 @@ public class Purse {
 			money.remove(temp.get(i));
 		}
 		
-		Coin[] coin = new Coin[temp.size()];
-		temp.toArray(coin);
-        return coin;
+		Valuable[] array  = new Valuable[temp.size()];
+		temp.toArray(array );
+        return array ;
 	}
   
     /** 
@@ -173,42 +175,33 @@ public class Purse {
     	
     	return "Purse capacity: "+getCapacity()+" Total money: "+getBalance()+" Capacity in Use: "+count();
     }
+
+	@Override
+	public double getValue() {
+		return 0;
+	}
+
+	@Override
+	public String getCurrency() {
+		return null;
+	}
     
     /**Main method for test Purse class */
 //    public static void main(String[] args) {
 //		Purse n = new Purse(5);
-//	
-//		System.out.println(n.toString());
-//		System.out.println(n.isFull());
-//		System.out.println(n.insert(new Coin(88, "kCoin")));
-//		n.insert(new Coin(77, "nCoin"));
-//		n.insert(new Coin(42, "vCoin"));
-//		n.insert(new Coin(36, "vCoin"));
+//		System.out.println(	n.insert( new BankNote(500, "Baht")));
+//		System.out.println(	n.insert( new BankNote(600, "Baht")));
+//		System.out.println(	n.insert( new BankNote(700, "Dollar")));
+//
+//		System.out.println( n.insert( new Coin(600, "Baht")));
+//		System.out.println( n.insert( new Coin(700, "Dollar")));
+//		System.out.println( n.insert( new Coin(700, "Dollar")));
+//		System.out.println(n.getBalance());
 //
 //		System.out.println(n.toString());
-//
-//		System.out.println("0 is here");
-//		System.out.println(n.insert(new Coin(0, "nCoin")));
-//		System.out.println(n.insert(new Coin(-9999, "nCoin")));
-//		
-//		System.out.println(Arrays.toString(n.withdraw(88)));
-//		System.out.println(n.toString());
-//
-//		System.out.println(n.withdraw(111111));
-//		System.out.println(n.toString());
-//
-//		System.out.println(Arrays.toString(n.withdraw(119+36)));
-//		System.out.println(n.toString());
-//
-//		
-//		//new test
-//		Purse test = new Purse(1);
-//		test.insert(new Coin(999, "currencyA"));
-//		System.out.println(test.toString());
-//		test.insert(new Coin(55, "currency"));
-//		System.out.println(test.toString());
-//		System.out.println(Arrays.toString(test.withdraw(999)));
-//
+//		System.out.println(Arrays.toString(n.withdraw(500)));
+//		System.out.println(Arrays.toString(n.withdraw(600)));
+//		System.out.println(Arrays.toString(n.withdraw(700)));
 //
 //	}
 

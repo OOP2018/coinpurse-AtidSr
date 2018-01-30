@@ -10,7 +10,7 @@ import java.util.List;
  * @version 2018.1.23
  */
 
-public class Coin implements Comparable<Coin> {
+public class Coin implements Comparable<Coin> , Valuable {
 	
 	/**Value of coin*/
 	private double value;
@@ -77,9 +77,9 @@ public class Coin implements Comparable<Coin> {
 	 * Method for order coin by value which is the smallest come first
 	 * @param Coin that user want to compare 
 	 * @return Order value a compare to b, 
-	 * -1 if coin a's value is greater than b's value 
+	 * -1 if coin a's value is lower than b's value 
 	 *  0 if coin a's value is equals b's value 
-	 *  1 if coin a's value is lower than b's value 
+	 *  1 if coin a's value is greater than b's value 
 	 */
 	public int compareTo(Coin coin) {
 		if (value < coin.getValue()) {

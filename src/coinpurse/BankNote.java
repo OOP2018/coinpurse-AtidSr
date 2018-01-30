@@ -5,7 +5,7 @@ package coinpurse;
  * @auther Atid Srisukhantapuek 
  * 
  */
-public class BankNote {
+public class BankNote implements Valuable {
 	
 	private static long nextSerialNumber = 1000000;
 	private double value;
@@ -64,6 +64,6 @@ public class BankNote {
 
 	/**Get information of BankNote Class*/
 	public String toString() {
-		return currency + "-Currency note [" + serialNumber + "]";
+		return value + "-"+currency+" note [" + serialNumber + "]";
 	}
 }
