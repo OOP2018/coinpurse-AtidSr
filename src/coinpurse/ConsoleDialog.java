@@ -73,12 +73,18 @@ public class ConsoleDialog {
     public void depositDialog() {
     	// Check to see if user typed values on the same line as "d".
     	// If so then use them without prompting for more.
+    	
+    
+    	
     	String inline = console.nextLine().trim();
     	if (inline.isEmpty()) {
     		System.out.print("Enter value of coin(s) to deposit on one line [eg: 5 0.5 1 (coin), Value >= 20 (BankNote)]: ");
     		inline = console.nextLine();
     	}
         // parse input line into numbers
+    	
+	try {	
+	
         Scanner scanline = new Scanner(inline);
         while( scanline.hasNextDouble() ) {
             double value = scanline.nextDouble();
@@ -92,6 +98,12 @@ public class ConsoleDialog {
         if ( scanline.hasNext() )
             System.out.println("Invalid input: "+scanline.next() );
         scanline.close();
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			
+		}
+
     }
     
     /** Ask how much money (Baht) to withdraw and then do it.

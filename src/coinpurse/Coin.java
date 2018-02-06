@@ -24,16 +24,13 @@ public class Coin implements Comparable<Coin> , Valuable {
 	 */
 	
 	public Coin(double value, String currency) {
-		try {
+		
 			if(value <= 0) {
-				throw new IllegalArgumentException();
+				throw new IllegalArgumentException("Value must be positive");
 			}else {
 				this.value = value;
 			}
-				
-		}catch(IllegalArgumentException e){
-			System.out.println("value must be positive");
-		}
+
 		
 		this.currency = currency;
 	}

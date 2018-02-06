@@ -3,7 +3,6 @@ package coinpurse;
 import java.util.ArrayList;
 import java.util.List;
 
-import jdk.internal.org.objectweb.asm.tree.analysis.Value;
 
 /** 
  * Class MoneyUtil create for test coin and BankNote class 
