@@ -25,7 +25,7 @@ public class Coin implements Comparable<Coin> , Valuable {
 	
 	public Coin(double value, String currency) {
 		
-			if(value <= 0) {
+			if(value < 0) {
 				throw new IllegalArgumentException("Value must be positive");
 			}else {
 				this.value = value;

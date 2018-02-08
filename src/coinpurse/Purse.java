@@ -181,11 +181,12 @@ public class Purse  {
     /**Main method for test Purse class */
 //    public static void main(String[] args) {
 //		Purse n = new Purse(5);
+//		System.out.println(	n.insert( new BankNote(0, "Baht")));
 //		System.out.println(	n.insert( new BankNote(500, "Baht")));
 //		System.out.println(	n.insert( new BankNote(600, "Baht")));
 //		System.out.println(	n.insert( new BankNote(700, "Dollar")));
 //
-//		System.out.println( n.insert( new Coin(600, "Baht")));
+//		System.out.println( n.insert( new Coin(0, "Baht")));
 //		System.out.println( n.insert( new Coin(700, "Dollar")));
 //		System.out.println( n.insert( new Coin(700, "Dollar")));
 //		System.out.println(n.getBalance());
