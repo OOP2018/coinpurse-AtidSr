@@ -66,7 +66,7 @@ public class MoneyUtil {
 		coins.add(new BankNote(47514854, "Baht"));
 		coins.add(new Coin(4.3, "Baht"));
 		
-		System.out.println("////////////unsorted////////////////////////////");
+		System.out.println("////////////unsorted///////////////////////////");
 
 		printCoins(coins);
 		System.out.println("////////////////sorted////////////////////////");
