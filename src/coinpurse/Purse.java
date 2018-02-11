@@ -3,13 +3,16 @@ package coinpurse;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import com.sun.org.apache.xpath.internal.operations.Variable;
+
 import java.util.Collections;
 import java.util.Comparator;
 // You will use Collections.sort() to sort the coins
 
 /**
- *  A coin purse contains coins.
- *  You can insert coins, withdraw money, check the balance,
+ *  A Valuable purse contains Valuable.
+ *  You can insert Valuable, withdraw money, check the balance,
  *  and check if the purse is full.
  *  
  *  @author Atid Srisukhantapuek
@@ -25,7 +28,7 @@ public class Purse  {
     
     /** 
      *  Create a purse with a specified capacity.
-     *  @param capacity is maximum number of coins you can put in purse.
+     *  @param capacity is maximum number of Valuable you can put in purse.
      */
     public Purse( int capacity ) {
     	this.capacity = capacity;
@@ -34,9 +37,9 @@ public class Purse  {
     }
 
     /**
-     * Count and return the number of coins in the purse.
-     * This is the number of coins, not their value.
-     * @return the number of coins in the purse
+     * Count and return the number of money in the purse.
+     * This is the number of valuable, not their value.
+     * @return the number of valuable in the purse
      */
     public int count() { 
     	
@@ -80,11 +83,11 @@ public class Purse  {
     }
 
     /** 
-     * Insert a coin into the purse.
-     * The coin is only inserted if the purse has space for it
-     * and the coin has positive value.  No worthless coins!
-     * @param coin is a Coin object to insert into purse
-     * @return true if coin inserted, false if can't insert
+     * Insert a valuable into the purse.
+     * The valuable is only inserted if the purse has space for it
+     * and the valuable has positive value.  No worthless coins!
+     * @param valuable is a Valuable object to insert into purse
+     * @return true if value inserted, false if can't insert
      */
     public boolean insert( Valuable value ) {
         // if the purse is already full then can't insert anything.
@@ -99,14 +102,14 @@ public class Purse  {
     
     /**  
      *  Withdraw the requested amount of money.
-     *  Return an array of Coins withdrawn from purse,
+     *  Return an array of Valuable withdrawn from purse,
      *  or return null if cannot withdraw the amount requested.
      *  @param amount is the amount to withdraw
-     *  @return array of Coin objects for money withdrawn, 
+     *  @return array of valuable objects for money withdrawn, 
 	 *    or null if cannot withdraw requested amount.
      */
-    public Valuable[] withdraw( double amount ) {
-    	if(amount < 0) {
+    public Valuable[] withdraw( Valuable amount ) {
+    	if(amount.getValue() < 0) {
     		return null;
     	}
     	
@@ -133,11 +136,12 @@ public class Purse  {
     	List<Valuable> temp = new ArrayList<Valuable>();
     	Collections.sort(money, new ValueComparator());
     	Collections.reverse(money);
-    	double amountNeededToWithdraw = amount;
-
+    	double amountNeededToWithdraw = amount.getValue();
+    	
+    	
 		for(int i = 0; i < money.size(); i++) {
-
-			if(money.get(i).getValue() <= amountNeededToWithdraw) {
+		
+			if(money.get(i).getValue() <= amountNeededToWithdraw && money.get(i).getCurrency().equals(amount.getCurrency()) ) {
 				amountNeededToWithdraw -= money.get(i).getValue();
 				temp.add(money.get(i));
 			}
@@ -166,6 +170,20 @@ public class Purse  {
 		temp.toArray(array );
         return array ;
 	}
+    
+    /**  
+     *  Withdraw the requested amount of money with baht currency.
+     *  Return an array of Valuable withdrawn from purse,
+     *  or return null if cannot withdraw the amount requested.
+     *  @param amount is the amount to withdraw
+     *  @return array of valuable objects for money withdrawn, 
+	 *    or null if cannot withdraw requested amount.
+     */
+    public Valuable[] withdraw( double amount ) {
+  	   Valuable baht = new Money(amount,"Baht");
+  	   return withdraw(baht);
+    }
+   
   
     /** 
      * toString returns a string description of the purse contents.
@@ -180,16 +198,24 @@ public class Purse  {
     
     /**Main method for test Purse class */
 //    public static void main(String[] args) {
-//		Purse n = new Purse(5);
+//		Purse n = new Purse(10);
 //		System.out.println(	n.insert( new BankNote(0, "Baht")));
 //		System.out.println(	n.insert( new BankNote(500, "Baht")));
 //		System.out.println(	n.insert( new BankNote(600, "Baht")));
 //		System.out.println(	n.insert( new BankNote(700, "Dollar")));
 //
 //		System.out.println( n.insert( new Coin(0, "Baht")));
+//		System.out.println( n.insert( new Coin(900, "Baht")));
 //		System.out.println( n.insert( new Coin(700, "Dollar")));
-//		System.out.println( n.insert( new Coin(700, "Dollar")));
-//		System.out.println(n.getBalance());
+//		System.out.println( n.insert( new Coin(800, "Dollar")));
+//		System.out.println( n.insert( new Coin(800, "Baht")));
+//		System.out.println( n.insert( new Coin(191, "Baht")));
+//		System.out.println( n.insert( new Coin(800, "Zollar")));
+//		System.out.println(n.toString());
+//		System.out.println(Arrays.toString(n.withdraw(800)));
+//		System.out.println(Arrays.toString(n.withdraw(new Money(900, "Dollar"))));
+//
+//		System.out.println(n.toString());
 //
 //		System.out.println(n.toString());
 //		System.out.println(Arrays.toString(n.withdraw(500)));

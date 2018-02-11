@@ -13,8 +13,14 @@ public class ValueComparator implements Comparator<Valuable>{
 	
 	public int compare(Valuable a, Valuable b) {
 		
-		if(a.getCurrency().equalsIgnoreCase("Dollar") && b.getCurrency().equalsIgnoreCase("Baht")){
-			return 1;
+		if(!a.getCurrency().equalsIgnoreCase(b.getCurrency())){
+			if(a.getCurrency().charAt(0) > b.getCurrency().charAt(0)) {
+				return 1;
+			}else if(a.getCurrency().charAt(0) < b.getCurrency().charAt(0)) {
+				return -1;
+			}else
+				return 0;
+			
 			// if a and b have same currency order by value
 		} else if(a.getCurrency().equalsIgnoreCase(b.getCurrency())){
 			
@@ -28,7 +34,6 @@ public class ValueComparator implements Comparator<Valuable>{
 		}else {
 			return -1;
 		}
-			
 		
 	}
 	
