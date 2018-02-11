@@ -15,5 +15,9 @@ public interface Valuable extends Comparable<Valuable>{
 	 * @return the currency of this object
 	 */
 	public String getCurrency();
+	/**
+	 * Compare Object which is equals other object or not 
+	 * @return true if equals false if not
+	 */
 	boolean equals(Object arg);
 }
