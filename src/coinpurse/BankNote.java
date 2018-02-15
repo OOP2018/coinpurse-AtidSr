@@ -30,6 +30,6 @@ public class BankNote extends Money {
 
 	/**Get information of BankNote Class*/
 	public String toString() {
-		return value + "-"+currency+" note [" + serialNumber + "]";
+		return this.getValue() + "-"+this.getCurrency()+" note [" + serialNumber + "]";
 	}
 }

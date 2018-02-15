@@ -29,7 +29,7 @@ public class Coin extends Money{
 	 * @return coin value and currency
 	 */
 	public String toString() {
-		return value + "-" + currency;
+		return this.getValue() + "-" + this.getCurrency();
 	}
 
 }

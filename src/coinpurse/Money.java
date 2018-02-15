@@ -10,9 +10,14 @@ package coinpurse;
 
 public class Money implements Valuable {
 	/**Value of money*/
-	double value;
+	private double value;
 	/**Currency of money*/
-	String currency;
+	private String currency;
+	/**
+	 * Constructor of Money with value and currency
+	 * @param Money's value
+	 * @param Money's currency 
+	 */
 	
 	public Money(double value, String currency) {
 
@@ -48,27 +53,24 @@ public class Money implements Valuable {
 	 *  1 if coin a's value is greater than b's value 
 	 */
 	public int compareTo(Valuable value) {
-		if(!value.getCurrency().equalsIgnoreCase(this.getCurrency())){
-			if(this.getCurrency().charAt(0) > value.getCurrency().charAt(0)) {
-				return 1;
-			}else if(this.getCurrency().charAt(0) < value.getCurrency().charAt(0)) {
-				return -1;
-			}else
-				return 0;
-			
-			// if a and b have same currency order by value
-		} else if(this.getCurrency().equalsIgnoreCase(value.getCurrency())){
+		
+		if(this.getCurrency().equalsIgnoreCase(value.getCurrency())){
 			
 			if (this.getValue() < value.getValue()) {
 				return -1;
 			} else if (this.getValue() > value.getValue()) {
 				return 1;
-			}
-			return 0;
+			}else 
+				return 0;
 			
-		}else {
-			return -1;
 		}
+		
+		return this.getCurrency().compareToIgnoreCase(value.getCurrency());
+
+
+
+		
+		
 	}
 
 	/**
