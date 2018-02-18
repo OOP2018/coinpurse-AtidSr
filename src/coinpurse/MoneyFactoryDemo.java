@@ -1,5 +1,8 @@
 package coinpurse;
-
+/**
+ *  This is class for test Singleton of MoneyFactory
+ *  @author Atid Srisukhantapuek
+ */
 public class MoneyFactoryDemo {
 
 	public static void main(String[] args) {

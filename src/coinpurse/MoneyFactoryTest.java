@@ -12,19 +12,37 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.sun.org.apache.xpath.internal.operations.Variable;
-
+/**
+ * Test the Purse using JUnit.
+ * This is a JUnit 4 test suite.  
+ * 
+ * IDEs (Eclipse, Netbeans, IntelliJ, BlueJ) include JUnit 4,
+ * but you have to tell the IDE to add it to your project as a "Library".
+ * To run these tests, right click on this file (in Project panel)
+ * and choose Run As -> JUnit test
+ * 
+ * @author Atid Srisukhantapuek
+ * 
+ */
 public class MoneyFactoryTest {
-
+	/** Thai's money value as double*/
 	private double ThaiValue[] = { 5, 10, 20, 50, 100, 500, 1000 };
+	/** Thai's money value as String*/
 	private String ThaiValueString[] = { "5", "10", "20", "50", "100", "500", "1000" };
+	/** Malay's money value as double*/
 	private double MalayValue[] = { 0.05, 0.10, 0.20, 0.5, 1, 20, 50, 100 };
+	/** Malay's money value as String*/
 	private String MalayValueString[] = { "0.05", "0.10", "0.20", "0.5", "1", "20", "50", "100" };
 
 	@Before
 	public void setUp() {
 		// nothing to initialize
 	}
-
+	
+	/** 
+	 * This method use for reduce code in testCreateValueWithDouble
+	 * @param Value that valid in country and factory 
+	 */
 	public void addMoney(double[] value, MoneyFactory F) {
 		for (int i = 0; i < value.length; i++) {
 			assertNotNull(F.createMoney(value[i]));
@@ -32,12 +50,19 @@ public class MoneyFactoryTest {
 
 	}
 
+	/** 
+	 * This method use for reduce code in testCreateValueWithString
+	 * @param Value that valid in country and factory 
+	 */
 	public void addMoney(String[] value, MoneyFactory F) {
 		for (int i = 0; i < value.length; i++) {
 			assertNotNull(F.createMoney(value[i]));
 		}
 	}
 
+	/**
+	 * Test Instance method of MoneyFactory 
+	 */
 	@Test
 	public void testInstance() {
 		MoneyFactory F = MoneyFactory.getInstance();
@@ -46,7 +71,10 @@ public class MoneyFactoryTest {
 		assertEquals(F, FF);
 
 	}
-
+	
+	/**
+	 * Test CreateValue method of MoneyFactory with double
+	 */
 	@Test
 	public void testCreateValueWithDouble() {
 		MoneyFactory.setFactory(new ThaiMoneyFactory());
@@ -59,7 +87,9 @@ public class MoneyFactoryTest {
 		addMoney(MalayValue, FF);
 
 	}
-
+	/**
+	 * Test CreateValue method of MoneyFactory with string
+	 */
 	@Test
 	public void testCreateValueWithString() {
 		MoneyFactory.setFactory(new ThaiMoneyFactory());
@@ -67,14 +97,16 @@ public class MoneyFactoryTest {
 
 		addMoney(ThaiValueString, F);
 
-		// Malaysia Value
+		// Malaysia's Value
 		MoneyFactory.setFactory(new MalayMoneyFactory());
 		MoneyFactory FF = MoneyFactory.getInstance();
 
 		addMoney(MalayValueString, FF);
 
 	}
-
+	/**
+	 * Test setValue method of MoneyFactory
+	 */
 	@Test
 	public void setFactory() {
 		MoneyFactory.setFactory(new ThaiMoneyFactory());
@@ -86,7 +118,9 @@ public class MoneyFactoryTest {
 		assertTrue(MalayFactory instanceof MalayMoneyFactory);
 
 	}
-
+	/**
+	 * Test currency of MalayFactory
+	 */
 	@Test
 	public void testMalayCurrency() {
 		MoneyFactory.setFactory(new MalayMoneyFactory());
@@ -98,7 +132,9 @@ public class MoneyFactoryTest {
 		assertEquals(m2.getCurrency(), MalayFactory.createMoney(100).getCurrency());
 
 	}
-	
+	/**
+	 * Test currency of ThaiFactory
+	 */
 	
 	@Test
 	public void testThaiCurrency() {
