@@ -20,6 +20,15 @@ public class BankNote extends Money {
 	    super(value, currency);
 		this.serialNumber = nextSerialNumber++;
 	}
+	
+	/**
+	 *Constructor of BankNote Class with value and currency 
+	 *@param value and currency
+	 */
+	public BankNote(double value ,String currency, long newSerialNumber) {
+	    super(value, currency);
+		this.serialNumber = newSerialNumber++;
+	}
 
 	/** Get serial number of BankNote
 	 * @return BankNote's serial number 

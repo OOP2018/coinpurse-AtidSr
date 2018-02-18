@@ -1,0 +1,22 @@
+package coinpurse;
+
+public class MoneyFactoryDemo {
+
+	public static void main(String[] args) {
+		MoneyFactory.setFactory(new ThaiMoneyFactory());
+		MoneyFactory factory = MoneyFactory.getInstance();
+		System.out.println(factory.createMoney("5").toString());
+		System.out.println(factory.createMoney("10").toString());
+		System.out.println(factory.createMoney("100").toString());
+		System.out.println(factory.createMoney("500").toString());
+
+		MoneyFactory.setFactory(new MalayMoneyFactory());
+		MoneyFactory malay = MoneyFactory.getInstance();
+		System.out.println(malay.createMoney("0.05").toString());
+		System.out.println(malay.createMoney("0.5").toString());
+		System.out.println(malay.createMoney("100").toString());
+		System.out.println(malay.createMoney("1000").toString());
+		
+
+	}
+}
