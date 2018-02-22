@@ -128,7 +128,7 @@ public class MoneyFactoryTest {
 		
 		Valuable m1 = new Coin(0.5, "Ringgit");
 		assertEquals(m1.getCurrency(), MalayFactory.createMoney(0.5).getCurrency());
-		Valuable m2 = new BankNote(100, "Ringgit");
+		Valuable m2 = new BankNote(100, "Ringgit",100000);
 		assertEquals(m2.getCurrency(), MalayFactory.createMoney(100).getCurrency());
 
 	}
@@ -143,7 +143,7 @@ public class MoneyFactoryTest {
 		
 		Valuable T1 = new Coin(5, "Baht");
 		assertEquals(T1.getCurrency(), ThaiFactory.createMoney(5).getCurrency());
-		Valuable T2 = new BankNote(100, "Baht");
+		Valuable T2 = new BankNote(100, "Baht",100000);
 		assertEquals(T2.getCurrency(), ThaiFactory.createMoney(100).getCurrency());
 
 	}

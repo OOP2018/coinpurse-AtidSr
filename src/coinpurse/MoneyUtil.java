@@ -56,32 +56,32 @@ public class MoneyUtil {
 		printCoins(coins);
 	}
 	
-	public static void main(String[] args) {
-
-		List<Valuable> coins = new ArrayList<Valuable>();
-		coins.add(new Coin(10.0,"Baht"));
-		coins.add(new BankNote(787878, "Baht"));
-		coins.add(new Coin(2.0, "Baht"));
-		coins.add(new BankNote(44000, "Dollar"));
-		coins.add(new Coin(50, "Dollar"));
-		coins.add(new Coin(8.7, "Dollar"));
-		coins.add(new BankNote(47514854, "Baht"));
-		coins.add(new Coin(4.3, "Baht"));
-		coins.add(new BankNote(44000, "eC"));
-		coins.add(new Coin(50, "fcE"));
-		coins.add(new Coin(8.7, "ageD"));
-		coins.add(new BankNote(47514854, "F"));
-		coins.add(new Coin(4.3, "Gagev"));
-		System.out.println("////////////unsorted///////////////////////////");
-
-		printCoins(coins);
-		System.out.println("////////////////sorted////////////////////////");
-		sortCoins(coins);
-		System.out.println("//////////////////////////////////////////////");
-
-		System.out.println(filterByCurrency(coins, "Baht"));
-		System.out.println(filterByCurrency(coins, "Dollar"));
-
-	}
+//	public static void main(String[] args) {
+//
+//		List<Valuable> coins = new ArrayList<Valuable>();
+//		coins.add(new Coin(10.0,"Baht"));
+//		coins.add(new BankNote(787878, "Baht"));
+//		coins.add(new Coin(2.0, "Baht"));
+//		coins.add(new BankNote(44000, "Dollar"));
+//		coins.add(new Coin(50, "Dollar"));
+//		coins.add(new Coin(8.7, "Dollar"));
+//		coins.add(new BankNote(47514854, "Baht"));
+//		coins.add(new Coin(4.3, "Baht"));
+//		coins.add(new BankNote(44000, "eC"));
+//		coins.add(new Coin(50, "fcE"));
+//		coins.add(new Coin(8.7, "ageD"));
+//		coins.add(new BankNote(47514854, "F"));
+//		coins.add(new Coin(4.3, "Gagev"));
+//		System.out.println("////////////unsorted///////////////////////////");
+//
+//		printCoins(coins);
+//		System.out.println("////////////////sorted////////////////////////");
+//		sortCoins(coins);
+//		System.out.println("//////////////////////////////////////////////");
+//
+//		System.out.println(filterByCurrency(coins, "Baht"));
+//		System.out.println(filterByCurrency(coins, "Dollar"));
+//
+//	}
 	
 }
