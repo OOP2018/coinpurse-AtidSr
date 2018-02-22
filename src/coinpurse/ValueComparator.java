@@ -9,8 +9,6 @@ public class ValueComparator implements Comparator<Valuable>{
 	 * First compare them by currency, so that "Baht" < "Dollar".
 	 *  If both objects have the same currency, order them by value.
 	 */
-	
-	
 	public int compare(Valuable a, Valuable b) {
 		
 		if(!a.getCurrency().equalsIgnoreCase(b.getCurrency())){

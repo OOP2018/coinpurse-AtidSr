@@ -12,6 +12,7 @@ public class MoneyFactoryDemo {
 		System.out.println(factory.createMoney("10").toString());
 		System.out.println(factory.createMoney("100").toString());
 		System.out.println(factory.createMoney("500").toString());
+		System.out.println(factory.createMoney("1000").toString());
 
 		MoneyFactory.setFactory(new MalayMoneyFactory());
 		MoneyFactory malay = MoneyFactory.getInstance();

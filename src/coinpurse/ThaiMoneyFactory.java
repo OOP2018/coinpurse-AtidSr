@@ -6,6 +6,8 @@ package coinpurse;
  */
 
 public class ThaiMoneyFactory extends MoneyFactory {
+	/** Next SerialNumber of MoneyFactory */
+	private static long nextSerialNumber = 1000000;
 	/**
 	 * This method modify createMoney from superclass(MoneyFactory) 
 	 * for accept Thai's money

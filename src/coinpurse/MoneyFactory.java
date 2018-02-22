@@ -5,9 +5,6 @@ public abstract class MoneyFactory {
 	/** instance of MoneyFactory*/
 	private static MoneyFactory factory;
 
-	/** Next SerialNumber of MoneyFactory */
-	protected static long nextSerialNumber = 1000000;
-
 	/**
 	 * Get instance of MoneyFactory
 	 * @return instance of MoneyFactory 
