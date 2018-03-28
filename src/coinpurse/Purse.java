@@ -4,10 +4,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.sun.org.apache.xpath.internal.operations.Variable;
+import coinpurse.strategy.GreedyWithdrawStrategy;
+import coinpurse.strategy.WithdrawStrategy;
+import coinpurse.strategy.RecursiveWithdraw;
 
 import java.util.Collections;
 import java.util.Comparator;
+
+
 // You will use Collections.sort() to sort the coins
 
 /**
@@ -26,6 +30,8 @@ public class Purse  {
      */
     private final int capacity;
     
+    
+	WithdrawStrategy withdrawstrategy = new RecursiveWithdraw();
     /** 
      *  Create a purse with a specified capacity.
      *  @param capacity is maximum number of Valuable you can put in purse.
@@ -133,28 +139,32 @@ public class Purse  {
 		// Did we get the full amount?
 		// This code assumes you decrease amount each time you remove a coin.
     	// Your code might use some other variable for the remaining amount to withdraw.
-    	List<Valuable> temp = new ArrayList<Valuable>();
-    	Collections.sort(money, new ValueComparator());
-    	Collections.reverse(money);
-    	double amountNeededToWithdraw = amount.getValue();
+        	
+    	List<Valuable> temp = withdrawstrategy.withdraw(amount, money);
+
+   
+//    	double amountNeededToWithdraw = amount.getValue();
+//    	
+//    	
+//		for(int i = 0; i < money.size(); i++) {
+//		
+//			if(money.get(i).getValue() <= amountNeededToWithdraw && money.get(i).getCurrency().equals(amount.getCurrency()) ) {
+//				amountNeededToWithdraw -= money.get(i).getValue();
+//				temp.add(money.get(i));
+//			}
+//			
+//			if(amountNeededToWithdraw == 0) break;
+//		}
+//		
+//		
+//		if ( amountNeededToWithdraw != 0 )
+//		{	
+//			// failed. Don't change the contents of the purse.
+//			return null;
+//	 	}
+    	if(temp == null) return null;
     	
     	
-		for(int i = 0; i < money.size(); i++) {
-		
-			if(money.get(i).getValue() <= amountNeededToWithdraw && money.get(i).getCurrency().equals(amount.getCurrency()) ) {
-				amountNeededToWithdraw -= money.get(i).getValue();
-				temp.add(money.get(i));
-			}
-			
-			if(amountNeededToWithdraw == 0) break;
-		}
-		
-		
-		if ( amountNeededToWithdraw != 0 )
-		{	
-			// failed. Don't change the contents of the purse.
-			return null;
-	 	}
 
 		// Success.
 		// Remove the coins you want to withdraw from purse,		
