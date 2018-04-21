@@ -11,8 +11,6 @@ import java.util.List;
  * @author Atid Srisukhantapuek
  * 
  */
-
-
 public class MoneyUtil {
 	
 	/**
@@ -20,10 +18,10 @@ public class MoneyUtil {
 	 *  @param value that user want to filter
 	 *  @return list of coin with same currency
 	 */
-	public static List<Valuable> filterByCurrency(List<Valuable>coins,String Currency){
-		List<Valuable> temp = new ArrayList<Valuable>();
+	public static <E extends Valuable>List<E> filterByCurrency(List<E>coins,String Currency){
+		List<E> temp = new ArrayList<E>();
 		
-		for(Valuable val: coins) {
+		for(E val: coins) {
 			if(val.getCurrency().equals(Currency)) {
 				temp.add(val);
 			}
@@ -36,7 +34,7 @@ public class MoneyUtil {
 	 * Print all Valuable that in list
 	 * @param list of Valuable that user want to print
 	 */
-	public static void printCoins(List<Valuable> val){
+	public static void printCoins(List<? extends Valuable> val){
 	
 			System.out.println(val.toString());
 	
@@ -48,13 +46,37 @@ public class MoneyUtil {
 	 * @param coins
 	 * 
 	 */
-	public static void sortCoins(List<Valuable> coins) {
+	public static void sortCoins(List<? extends Valuable> coins) {
 		Comparator<Valuable> comp = new ValueComparator();
 		
 		Collections.sort(coins,comp);
 		
 		printCoins(coins);
 	}
+	
+	/** 
+	 * Return the larger argument, based on sort order, using  
+	 * the objects' own compareTo method for comparing. 
+	 * @param args one or more Comparable objects to compare. 
+	 * @return the argument that would be last if sorted the elements. 
+	 * @throws IllegalArgumentException if no arguments given. 
+	 */ 
+	public static <E extends Comparable<? super E>> E max(E ... args) {
+		
+		if(args == null) {
+			throw new IllegalArgumentException("No arguments given");
+		}
+		
+		E max = args[0];
+		for(int i = 0; i < args.length; i++) {
+			if(max.compareTo(args[i]) < 1) {
+				max = args[i];
+
+			}
+		}	
+		return max;    
+	}
+	
 	
 //	public static void main(String[] args) {
 //
@@ -82,6 +104,13 @@ public class MoneyUtil {
 //		System.out.println(filterByCurrency(coins, "Baht"));
 //		System.out.println(filterByCurrency(coins, "Dollar"));
 //
+//		 Money m1 = new BankNote(100, "Baht", 5555555);
+//		 Money m2 = new BankNote(500, "Baht", 1111111);
+//		 Money m3 = new Coin(20, "Baht");
+//		 Money max = MoneyUtil.max( m1, m2, m3 );
+//		 System.out.println(max.toString());
 //	}
+	
+
 	
 }
